@@ -9,6 +9,7 @@
   "source": "./src/index.ts",
   "scripts": {
     "test": "jest",
+    "build:wasm": "cd wasm && make build",
     "build": "yarn clean && tsc --declaration --module es2015 --outdir module && tsc --module commonjs --outdir lib && yarn build-deno",
     "clean": "rm -rf lib && rm -rf module && rm -rf deno_lib",
     "doc": "typedoc src/index.ts",
@@ -41,7 +42,9 @@
     "standard-version": "^9.3.0",
     "ts-jest": "^26.5.2",
     "ts-node": "^9.1.1",
+    "tsup": "^5.11.1",
     "typedoc": "^0.20.28",
-    "typescript": "^4.2.2"
+    "typescript": "^4.2.2",
+    "vite": "^2.7.1"
   }
 }
