@@ -1,5 +1,10 @@
-import init, {initThreadPool, sum_of_squares} from '../wasm/pkg/wasm.js'
+import initWasm, { initThreadPool, sum_of_squares } from '../wasm_dist/wasm';
 
-await init();
-await initThreadPool(2);
-console.log(sum_of_squares(new Int32Array([2, 3])));
+export async function init() {
+  await initWasm();
+  await initThreadPool(2);
+}
+
+export function calc() {
+  return sum_of_squares(new Int32Array([2, 3]));
+}

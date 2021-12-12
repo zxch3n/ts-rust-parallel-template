@@ -19,5 +19,5 @@
     "preserveSymlinks": true,
     "outDir": "lib/"
   },
-  "include": ["src"]
+  "include": ["src", "./comlink.d.ts"]
 }
