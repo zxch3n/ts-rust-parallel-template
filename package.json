@@ -1,5 +1,5 @@
 {
-  "name": "ts-boilerplate",
+  "name": "ts-parallel-template",
   "sideEffects": false,
   "version": "0.0.1",
   "description": "",
@@ -11,10 +11,8 @@
     "start": "vite",
     "test": "jest",
     "build:wasm": "cd wasm && make build",
-    "build": "yarn clean && tsc --declaration --module es2015 --outdir module && tsc --module commonjs --outdir lib && vite build",
-    "clean": "rm -rf lib && rm -rf module && rm -rf deno_lib",
+    "build": "pnpm build:wasm && vite build",
     "doc": "typedoc src/index.ts",
-    "build-deno": "denoify",
     "release": "yarn build && standard-version",
     "typecheck": "tsc --noEmit"
   },
@@ -40,7 +38,6 @@
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",
     "chance": "^1.1.7",
-    "denoify": "^0.6.5",
     "jest": "^26.6.3",
     "prettier": "^2.3.2",
     "standard-version": "^9.3.0",

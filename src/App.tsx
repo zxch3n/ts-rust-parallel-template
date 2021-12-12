@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import testWorker from 'comlink:./test';
-
-const {init, calc} = testWorker();
+import {calc, init} from './wasm'
 
 
 function App() {

@@ -1,4 +1,4 @@
-import initWasm, { initThreadPool, sum_of_squares } from '../wasm_dist/wasm';
+import initWasm, {sum_of_squares, initThreadPool} from '../wasm_dist/wasm';
 
 export async function init() {
   await initWasm();
