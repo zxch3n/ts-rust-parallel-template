@@ -14,7 +14,8 @@
     "build": "pnpm build:wasm && vite build",
     "doc": "typedoc src/index.ts",
     "release": "yarn build && standard-version",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deno-test": "DENO_DIR=\"$PWD/.cache\" deno run -A  --location http://localhost:3000/ --reload http://localhost:3000/deno/run.ts"
   },
   "keywords": [
     "js",
@@ -46,10 +47,10 @@
     "tsup": "^5.11.1",
     "typedoc": "^0.20.28",
     "typescript": "^4.4.4",
-    "vite": "^2.7.1",
+    "vite": "^2.7.10",
     "vite-plugin-comlink": "^2.1.0",
     "vite-plugin-cross-origin-isolation": "^0.1.1",
-    "vite-plugin-worker": "^1.0.4"
+    "vite-plugin-worker": "^1.0.5"
   },
   "dependencies": {
     "comlink": "^4.3.1",

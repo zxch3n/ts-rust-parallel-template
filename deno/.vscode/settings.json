@@ -1,5 +1,7 @@
 {
     "editor.tabSize": 2,
     "importSorter.importStringConfiguration.tabSize": 2,
-    "deno.enable": false
+    "deno.enable": true,
+    "deno.lint": false,
+    "deno.unstable": false
 }

@@ -19,6 +19,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'lib': path.resolve(__dirname, 'src/main.tsx'),
+        'run': path.resolve(__dirname, 'src/run.ts'),
         'wasm': path.resolve(__dirname, 'wasm_dist/wasm.js'),
       },
     },
