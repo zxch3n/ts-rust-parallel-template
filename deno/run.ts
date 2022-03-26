@@ -9,6 +9,8 @@ if (testFiles.length === 0) {
   Deno.exit();
 }
 
+console.log('Core Number', navigator.hardwareConcurrency);
+console.log();
 console.log('Start testing...');
 for (const file of testFiles) {
   const path = 'http://localhost:3000/deno/' + file;
