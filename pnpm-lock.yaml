@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@types/chance': ^1.1.1
+  '@types/node': ^17.0.23
   '@types/react': ^17.0.33
   '@types/react-dom': ^17.0.10
   '@vitejs/plugin-react': ^1.0.7
@@ -26,6 +27,7 @@ dependencies:
 
 devDependencies:
   '@types/chance': registry.npmmirror.com/@types/chance/1.1.3
+  '@types/node': registry.npmmirror.com/@types/node/17.0.23
   '@types/react': registry.npmmirror.com/@types/react/17.0.37
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/17.0.11
   '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/1.1.1
@@ -2353,6 +2355,12 @@ packages:
     resolution: {integrity: sha1-7nceK6Sz3Fs3KTXVSf2WF780W4w=, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/minimist/download/@types/minimist-1.2.2.tgz}
     name: '@types/minimist'
     version: 1.2.2
+    dev: true
+
+  registry.npmmirror.com/@types/node/17.0.23:
+    resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-17.0.23.tgz}
+    name: '@types/node'
+    version: 17.0.23
     dev: true
 
   registry.npmmirror.com/@types/normalize-package-data/2.4.1:

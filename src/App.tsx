@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import {calc, init} from './wasm'
-
+import { calcSumOfSquares, init } from './wasm';
 
 function App() {
   const [count, setCount] = useState(0);
   useEffect(() => {
     (async () => {
       await init();
-      console.log(await calc());
-    })()
-  }, [])
+      console.log(await calcSumOfSquares([1, 2]));
+    })();
+  }, []);
 
   return (
     <div className="App">
