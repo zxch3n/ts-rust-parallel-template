@@ -1,55 +1,36 @@
-import {
-  delay,
-  waitFor,
-} from 'https://deno.land/x/mighty_promise@v0.0.10/mod.ts';
-const viteServer = 'http://localhost:3000';
+import * as path from "https://deno.land/std@0.105.0/path/mod.ts";
+import { cac } from "https://unpkg.com/cac@6.7.12/mod.ts";
 
-const testFiles = [] as string[];
+export function getDirName(meta: ImportMeta) {
+  const iURL = meta.url,
+    fileStartRegex = /(^(file:)((\/\/)?))/,
+    __dirname = path
+      .join(iURL, "../")
+      .replace(fileStartRegex, "")
+      .replace(/(\/$)/, ""),
+    __filename = iURL.replace(fileStartRegex, "");
 
-for await (const file of Deno.readDir('./deno')) {
-  if (file.name.endsWith('test.ts')) {
-    testFiles.push(file.name);
-  }
+  return { __dirname, __filename };
 }
 
-if (testFiles.length === 0) {
-  Deno.exit();
-}
+const cli = cac("test-runner");
+cli.command("test", "run deno tests").action(runTests);
+cli.command("bench", "benchmarking").action(runBenches);
+cli.help();
+cli.parse();
 
-console.log('Core Number', navigator.hardwareConcurrency);
-console.log();
-
-let serverProcess;
-if (!(await isServerAvailable())) {
-  serverProcess = Deno.run({ cmd: ['pnpm', 'start'], stdout: 'null' });
-  console.log('Starting server...');
-  await waitFor({
-    condition: isServerAvailable,
-    timeout: 20_000,
-  });
-  await delay(1000);
-  console.log('Starting server done\n');
-}
-
-console.log('Start testing...');
-for (const file of testFiles) {
-  const path = viteServer + '/deno/' + file;
-  console.log('-----------------------------\n');
-  console.log('>> ' + path + ':\n\n');
-  Deno.run;
+async function runBenches() {
   await Deno.run({
-    cmd: ['deno', 'test', '-Aq', '--location', viteServer, path, '--reload'],
-    stdout: 'inherit',
+    cmd: ["deno", "bench", "--unstable", "-A"],
+    stdout: "inherit",
+    cwd: getDirName(import.meta).__dirname,
   }).status();
-  console.log();
 }
 
-const promise = serverProcess?.status();
-serverProcess?.kill('SIGTERM');
-serverProcess?.close();
-await promise;
-
-async function isServerAvailable() {
-  const res = await fetch(viteServer);
-  return res.status === 200;
+async function runTests() {
+  await Deno.run({
+    cmd: ["deno", "test", "-A"],
+    stdout: "inherit",
+    cwd: getDirName(import.meta).__dirname,
+  }).status();
 }
